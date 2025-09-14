@@ -1,10 +1,23 @@
 import {readFileSync, writeFileSync} from 'fs';
+import BaseEntity from "@entity/BaseEntity";
 
-export const createCsvFile = (data: any, outputFileName: string) => {
+export interface iJsonToCsv {
+    id: string;
+    name: string;
+    type: string;
+    data: string;
+}
+
+export const createCsvFile = (
+    data: any,
+    outputFileName: string
+) => {
     writeFileSync(outputFileName, data.join('\n'));
 }
 
-export const csvToJson = (filePath: string) => {
+export const csvToJson = (
+    filePath: string
+) => {
     const fileContent = readFileSync(filePath, 'utf-8');
 
     const lines = fileContent.split('\n').filter(Boolean);
@@ -19,3 +32,15 @@ export const csvToJson = (filePath: string) => {
         return obj;
     });
 };
+
+export const jsonToCsv = (
+    objects: BaseEntity[], //polymorphism
+    filePath="output.csv"
+) => {
+    const lines = objects.map(obj => obj.toCsv()).join('\n');
+    const headers = "id, name, type, data\n";
+
+    const fileContent = headers + lines + '\n';
+
+    writeFileSync(filePath, fileContent);
+}
