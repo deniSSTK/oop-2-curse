@@ -4,12 +4,12 @@ import eStudentCardCode from "@enum/StudentCardCodesEnum";
 class StudentCard extends BaseEntity {
 
     private readonly code: eStudentCardCode;
-    private readonly number: number;
+    private readonly number: string;
 
     constructor(code: eStudentCardCode, number: number) {
         super();
         this.code = code;
-        this.number = number;
+        this.number = String(number).padStart(6, '0');
     }
 
     public override getAll() {
@@ -18,6 +18,13 @@ class StudentCard extends BaseEntity {
             code: this.code,
             number: this.number
         };
+    }
+
+    public checkValidity(): boolean {
+        const codes = Object.values(eStudentCardCode).join("|");
+        const regex = new RegExp(`^(${codes})-\\d{6}$`);
+
+        return regex.test(this.toString());
     }
 
     public override toString() {
