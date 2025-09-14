@@ -6,16 +6,19 @@ import eCourseEnum from "@enum/CourseEnum";
 import eStudentCardCode from "@enum/StudentCardCodesEnum";
 
 import {sn} from "../mixins/consoleMixins";
-import {createCsvFile, csvToJson} from "../mixins/fileMixins";
+import {createCsvFile, csvToJson, jsonToCsv} from "../mixins/fileMixins";
+import Doctor from "@entity/Doctor";
+import Mechanic from "@entity/Mechanic";
 
 console.log("---START 1 LAB---")
 console.log("---GENERATE 5 RANDOM STUDENTS---")
-console.log(Student.generateRandomStudentsList(5))
+console.log(Student.generateRandomsList(5))
 sn()
 
 console.log("---CREATE STUDENT CARD---")
 console.log("Input params CardCode = BB, CardNumber = 100")
-const studentCard = new StudentCard(eStudentCardCode.BB, 100)
+const studentCard = new StudentCard(eStudentCardCode.BB, 1000)
+console.log(studentCard.checkValidity())
 
 console.log("Overwrote method toString() for StudentCard output: " + studentCard.toString())
 console.log("Overwrote parent method getAll() for StudentCard output: ", studentCard.getAll())
@@ -31,7 +34,7 @@ console.log("Description: Обчислити кількість студенті
 createCsvFile(
     [
         Student.csvParams(),
-        ...Student.generateRandomStudentsList(100).map(student => student.toString())
+        ...Student.generateRandomsList(100).map(student => student.toString())
     ],
     'students.csv')
 
@@ -41,3 +44,11 @@ console.log("Filtered list", csvToJson(__dirname + '/students.csv').filter(s =>
     Number(s.Course) === eCourseEnum.SECOND &&
     Number(s.GPA)  >= 3.5))
 sn()
+
+const objectList = [
+    Student.generateRandom(),
+    Doctor.generateRandom(),
+    Mechanic.generateRandom()
+]
+
+jsonToCsv(objectList)
