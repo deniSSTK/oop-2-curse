@@ -1,7 +1,8 @@
 import BaseEntity from "@entity/BaseEntity";
 import eDoctorSpecializationEnum from "@enum/DoctorSpecializationEnum";
+import iSpeaker from "@interface/Speaker";
 
-class Doctor extends BaseEntity {
+class Doctor extends BaseEntity implements iSpeaker {
     public name: string;
     public surname: string;
     public specialization: eDoctorSpecializationEnum;
@@ -38,6 +39,19 @@ class Doctor extends BaseEntity {
         const randomExperience = Math.floor(Math.random() * 30);
 
         return new Doctor(randomName, randomSurname, randomSpec, randomExperience);
+    }
+
+    public tellHistory(): string {
+        return "History"
+    }
+
+    public toCsv(): string {
+        return super.toCsvFormat({
+            id: this.id,
+            name: this.name,
+            type: typeof Doctor,
+            data: JSON.stringify(this.getAll())
+        });
     }
 }
 

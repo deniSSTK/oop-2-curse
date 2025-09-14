@@ -47,7 +47,7 @@ class Student extends BaseEntity {
         }
     }
 
-    public static generateRandomStudent(): Student {
+    public static generateRandom(): Student {
         const names = ["Denis", "Anna", "Ivan", "Olga"];
         const surnames = ["Tkachenko", "Petrenko", "Ivanov", "Shevchenko"];
         const gpas = [2.5, 3.0, 3.5, 4.0, 4.5, 5.0];
@@ -77,8 +77,8 @@ class Student extends BaseEntity {
         );
     }
 
-    public static generateRandomStudentsList(n: number): Student[] {
-        return Array.from({ length: n}, () => this.generateRandomStudent())
+    public static generateRandomsList(n: number): Student[] {
+        return Array.from({ length: n}, () => this.generateRandom())
     }
 
     public static csvParams() {
@@ -89,8 +89,13 @@ class Student extends BaseEntity {
         return `${this.name}, ${this.surname}, ${this.course}, ${this.sex}, ${this.studentCard.toString()}, ${this.gpa}, ${this.studentRecordBookNumber}`;
     }
 
-    public generateHistory(): string {
-        return "History"
+    public override toCsv(): string {
+        return super.toCsvFormat({
+            id: this.id,
+            name: this.name,
+            type: typeof Student,
+            data: JSON.stringify(this.getAll())
+        })
     }
 }
 
