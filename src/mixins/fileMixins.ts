@@ -1,5 +1,5 @@
 import {readFileSync, writeFileSync} from 'fs';
-import BaseEntity from "@entity/BaseEntity";
+import BaseEntity from "@model/BaseEntity";
 
 export interface iJsonToCsv {
     id: string;

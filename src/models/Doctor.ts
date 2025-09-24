@@ -1,4 +1,4 @@
-import BaseEntity from "@entity/BaseEntity";
+import BaseEntity from "@model/BaseEntity";
 import eDoctorSpecializationEnum from "@enum/DoctorSpecializationEnum";
 import iSpeaker from "@interface/Speaker";
 

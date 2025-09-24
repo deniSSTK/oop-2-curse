@@ -1,4 +1,4 @@
-import BaseEntity from "@entity/BaseEntity";
+import BaseEntity from "@model/BaseEntity";
 
 class Flight extends BaseEntity {
     readonly number: string;

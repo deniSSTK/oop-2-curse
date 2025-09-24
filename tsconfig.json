@@ -4,13 +4,15 @@
     "lib": ["es2017", "dom"],
     "baseUrl": "./src",
     "paths": {
-      "@entity/*": ["entities/*"],
+      "@model/*": ["models/*"],
       "@enum/*": ["enums/*"],
-      "@interface/*": ["interfaces/*"],
+      "@interface/*": ["interfaces/*"]
     },
     "outDir": "dist",
     "strict": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node"
   },
   "include": ["src"]
 }

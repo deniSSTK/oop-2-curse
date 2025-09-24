@@ -1,4 +1,4 @@
-import TreeNode from "@entity/tree/TreeNode";
+import TreeNode from "@model/tree/TreeNode";
 
 class BinaryTreeIterator<T> implements Iterator<T> {
     private stack: TreeNode<T>[];

@@ -1,9 +1,9 @@
 //compile to .js using:
-//npx esbuild src/2/main.ts --bundle --outfile=src/2/main.js --platform=browser --alias:@entity=./src/entities
+//npx esbuild src/2/main.ts --bundle --outfile=src/2/main.js --platform=browser --alias:@model=./src/models
 
-import BinaryTree from "@entity/tree/BinaryTree";
-import Student from "@entity/Student";
-import TreeNode from "@entity/tree/TreeNode";
+import BinaryTree from "@model/tree/BinaryTree";
+import Student from "@model/Student";
+import TreeNode from "@model/tree/TreeNode";
 
 const compareStudents = (a: Student, b: Student): number => a.age - b.age;
 
