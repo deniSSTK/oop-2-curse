@@ -7,18 +7,23 @@ import eStudentCardCode from "@enum/StudentCardCodesEnum";
 
 class Student extends BaseEntity {
 
-    private readonly name: string;
-    private readonly surname: string;
-    private readonly course: eCurseEnum;
-    private readonly sex: eSexEnum;
-    private readonly studentCard: StudentCard;
-    private readonly gpa: number;
-    private readonly studentRecordBookNumber: number;
+    readonly name: string;
+    readonly surname: string;
+    readonly age: number;
+    readonly course: eCurseEnum;
+    readonly sex: eSexEnum;
+    readonly studentCard: StudentCard;
+    readonly gpa: number;
+    readonly studentRecordBookNumber: number;
+
+    private static readonly MIN_AGE = 17;
+    private static readonly MAX_AGE = 30;
 
     constructor(
         name: string,
         surname: string,
         course: eCurseEnum,
+        age: number,
         sex: eSexEnum,
         studentCard: StudentCard,
         gpa: number,
@@ -27,6 +32,7 @@ class Student extends BaseEntity {
         super();
         this.name = name;
         this.surname = surname;
+        this.age = age;
         this.course = course;
         this.sex = sex;
         this.studentCard = studentCard;
@@ -56,6 +62,7 @@ class Student extends BaseEntity {
         const randomSurname = surnames[Math.floor(Math.random() * surnames.length)];
         const courses = Object.values(eCourseEnum).filter(v => typeof v === "number") as eCourseEnum[];
         const randomCourse = courses[Math.floor(Math.random() * courses.length)];
+        const randomAge = Math.floor(Math.random() * (Student.MAX_AGE - Student.MIN_AGE + 1)) + Student.MIN_AGE;
         const randomSex = Math.random() < 0.5 ? eSexEnum.MALE : eSexEnum.FEMALE;
 
         const randomGpa = gpas[Math.floor(Math.random() * gpas.length)];
@@ -70,6 +77,7 @@ class Student extends BaseEntity {
             randomName,
             randomSurname,
             randomCourse,
+            randomAge,
             randomSex,
             new StudentCard(randomCode, randomCardNumber),
             randomGpa,
