@@ -9,6 +9,7 @@ import {sn} from "../mixins/consoleMixins";
 import {createCsvFile, csvToJson, jsonToCsv} from "../mixins/fileMixins";
 import Doctor from "@model/Doctor";
 import Mechanic from "@model/Mechanic";
+import Residence from "@model/Residence";
 
 console.log("---START 1 LAB---")
 console.log("---GENERATE 5 RANDOM STUDENTS---")
@@ -33,7 +34,8 @@ const student = new Student(
     eSexEnum.MALE,
     studentCard,
     3.5,
-    1234567890
+    1234567890,
+    new Residence("Street", "City", "12345", "USA")
 )
 console.log(student.getAll())
 sn()

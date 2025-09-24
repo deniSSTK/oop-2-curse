@@ -4,8 +4,10 @@ import eSexEnum from "@enum/SexEnum";
 import StudentCard from "@model/StudentCard";
 import eCourseEnum from "@enum/CourseEnum";
 import eStudentCardCode from "@enum/StudentCardCodesEnum";
+import Residence from "@model/Residence";
+import BaseEntityGenerate from "@interface/BaseEntityGenerate";
 
-class Student extends BaseEntity {
+class Student extends BaseEntityGenerate {
 
     readonly name: string;
     readonly surname: string;
@@ -15,6 +17,7 @@ class Student extends BaseEntity {
     readonly studentCard: StudentCard;
     readonly gpa: number;
     readonly studentRecordBookNumber: number;
+    readonly residence: Residence;
 
     private static readonly MIN_AGE = 17;
     private static readonly MAX_AGE = 30;
@@ -28,6 +31,7 @@ class Student extends BaseEntity {
         studentCard: StudentCard,
         gpa: number,
         studentRecordBookNumber: number,
+        residence: Residence
     ) {
         super();
         this.name = name;
@@ -38,6 +42,7 @@ class Student extends BaseEntity {
         this.studentCard = studentCard;
         this.gpa = gpa;
         this.studentRecordBookNumber = studentRecordBookNumber;
+        this.residence = residence;
     }
 
     public override getAll() {
@@ -53,7 +58,7 @@ class Student extends BaseEntity {
         }
     }
 
-    public static generateRandom(): Student {
+    static override generateRandom(): Student {
         const names = ["Denis", "Anna", "Ivan", "Olga"];
         const surnames = ["Tkachenko", "Petrenko", "Ivanov", "Shevchenko"];
         const gpas = [2.5, 3.0, 3.5, 4.0, 4.5, 5.0];
@@ -81,19 +86,20 @@ class Student extends BaseEntity {
             randomSex,
             new StudentCard(randomCode, randomCardNumber),
             randomGpa,
-            randomBookNumber
+            randomBookNumber,
+            new Residence("Street", "City", "12345", "USA")
         );
     }
 
-    public static generateRandomsList(n: number): Student[] {
+    static override generateRandomsList(n: number): Student[] {
         return Array.from({ length: n}, () => this.generateRandom())
     }
 
-    public static csvParams() {
+    static csvParams() {
         return `Name, Surname, Course, Sex, StudentCard, GPA, StudentRecordBookNumber`
     }
 
-    public override toString() {
+    override toString() {
         return `${this.name}, ${this.surname}, ${this.course}, ${this.sex}, ${this.studentCard.toString()}, ${this.gpa}, ${this.studentRecordBookNumber}`;
     }
 

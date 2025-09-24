@@ -7,11 +7,14 @@
     "build": "tsc"
   },
   "dependencies": {
+    "@msgpack/msgpack": "^3.1.2",
     "@types/uuid": "^10.0.0",
-    "uuid": "^11.1.0"
+    "uuid": "^11.1.0",
+    "xml2js": "^0.6.2"
   },
   "devDependencies": {
     "@types/node": "^18.19.127",
+    "@types/xml2js": "^0.4.14",
     "typescript": "^5.5.3",
     "undici-types": "^7.16.0"
   },
