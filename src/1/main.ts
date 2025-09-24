@@ -1,5 +1,5 @@
-import Student from "@entity/Student";
-import StudentCard from "@entity/StudentCard";
+import Student from "@model/Student";
+import StudentCard from "@model/StudentCard";
 
 import eSexEnum from "@enum/SexEnum";
 import eCourseEnum from "@enum/CourseEnum";
@@ -7,8 +7,8 @@ import eStudentCardCode from "@enum/StudentCardCodesEnum";
 
 import {sn} from "../mixins/consoleMixins";
 import {createCsvFile, csvToJson, jsonToCsv} from "../mixins/fileMixins";
-import Doctor from "@entity/Doctor";
-import Mechanic from "@entity/Mechanic";
+import Doctor from "@model/Doctor";
+import Mechanic from "@model/Mechanic";
 
 console.log("---START 1 LAB---")
 console.log("---GENERATE 5 RANDOM STUDENTS---")
@@ -25,7 +25,16 @@ console.log("Overwrote parent method getAll() for StudentCard output: ", student
 sn()
 
 console.log("---CREATE STUDENT---")
-const student = new Student('Denis', 'Tkachenko', eCourseEnum.SECOND, eSexEnum.MALE, studentCard, 3.5, 123456789)
+const student = new Student(
+    'Denis',
+    'Tkachenko',
+    eCourseEnum.SECOND,
+    18,
+    eSexEnum.MALE,
+    studentCard,
+    3.5,
+    1234567890
+)
 console.log(student.getAll())
 sn()
 

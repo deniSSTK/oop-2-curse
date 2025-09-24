@@ -1,8 +1,6 @@
 import { v4 as uuidv4 } from "uuid"
-import iBaseEntityInterface from "@entity/BaseEntity";
+import iBaseEntityInterface from "@model/BaseEntity";
 import {iJsonToCsv} from "../mixins/fileMixins";
-import StudentCard from "@entity/StudentCard";
-import Mechanic from "@entity/Mechanic";
 
 abstract class BaseEntity implements iBaseEntityInterface {
 

@@ -1,4 +1,4 @@
-import BaseEntity from "@entity/BaseEntity";
+import BaseEntity from "@model/BaseEntity";
 import {eMechanicSpecializationEnum} from "@enum/MechanicSpecializtionEnum";
 
 class Mechanic extends BaseEntity {

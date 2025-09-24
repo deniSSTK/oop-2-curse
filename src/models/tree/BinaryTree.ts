@@ -1,5 +1,5 @@
-import TreeNode from "@entity/tree/TreeNode";
-import BinaryTreeIterator from "@entity/tree/BinaryTreeIterator";
+import TreeNode from "@model/tree/TreeNode";
+import BinaryTreeIterator from "@model/tree/BinaryTreeIterator";
 
 class BinaryTree<T> implements Iterable<T> {
     root: TreeNode<T> | null = null;

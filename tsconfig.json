@@ -4,7 +4,7 @@
     "lib": ["es2017", "dom"],
     "baseUrl": "./src",
     "paths": {
-      "@entity/*": ["entities/*"],
+      "@model/*": ["models/*"],
       "@enum/*": ["enums/*"],
       "@interface/*": ["interfaces/*"],
     },

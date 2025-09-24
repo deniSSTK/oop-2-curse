@@ -1,4 +1,4 @@
-import BaseEntity from "@entity/BaseEntity";
+import BaseEntity from "@model/BaseEntity";
 import eStudentCardCode from "@enum/StudentCardCodesEnum";
 
 class StudentCard extends BaseEntity {

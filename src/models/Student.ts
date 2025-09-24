@@ -1,7 +1,7 @@
-import BaseEntity from "@entity/BaseEntity";
+import BaseEntity from "@model/BaseEntity";
 import eCurseEnum from "@enum/CourseEnum";
 import eSexEnum from "@enum/SexEnum";
-import StudentCard from "@entity/StudentCard";
+import StudentCard from "@model/StudentCard";
 import eCourseEnum from "@enum/CourseEnum";
 import eStudentCardCode from "@enum/StudentCardCodesEnum";
 
