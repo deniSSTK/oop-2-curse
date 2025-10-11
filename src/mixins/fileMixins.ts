@@ -33,14 +33,19 @@ export const csvToJson = (
     });
 };
 
-export const jsonToCsv = (
-    objects: BaseEntity[], //polymorphism
-    filePath="output.csv"
+export const jsonToTxt = (
+    objects: BaseEntity[],
+    filePath = "output.txt"
 ) => {
-    const lines = objects.map(obj => obj.toCsv()).join('\n');
-    const headers = "id, name, type, data\n";
+    const lines = objects.map((obj: any) => {
+        const header = `${obj.constructor.name} ${obj.name}`;
 
-    const fileContent = headers + lines + '\n';
+        const jsonPart = JSON.stringify(obj, null, 2);
 
-    writeFileSync(filePath, fileContent);
-}
+        return `${header}\n${jsonPart};`;
+    });
+
+    const fileContent = lines.join("\n\n");
+
+    writeFileSync(filePath, fileContent, "utf-8");
+};

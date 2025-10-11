@@ -5,6 +5,8 @@ import BinaryTree from "@model/tree/BinaryTree";
 import Student from "@model/Student";
 import TreeNode from "@model/tree/TreeNode";
 
+const students = Student.generateRandomsList(10)
+
 const compareStudents = (a: Student, b: Student): number => a.age - b.age;
 
 function generateTree(count: number): BinaryTree<Student> {

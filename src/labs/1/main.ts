@@ -5,8 +5,8 @@ import eSexEnum from "@enum/SexEnum";
 import eCourseEnum from "@enum/CourseEnum";
 import eStudentCardCode from "@enum/StudentCardCodesEnum";
 
-import {sn} from "../mixins/consoleMixins";
-import {createCsvFile, csvToJson, jsonToCsv} from "../mixins/fileMixins";
+import {sn} from "../../mixins/consoleMixins";
+import {createCsvFile, csvToJson, jsonToTxt} from "../../mixins/fileMixins";
 import Doctor from "@model/Doctor";
 import Mechanic from "@model/Mechanic";
 import Residence from "@model/Residence";
@@ -62,4 +62,4 @@ const objectList = [
     Mechanic.generateRandom()
 ]
 
-jsonToCsv(objectList)
+jsonToTxt(objectList)

@@ -1,5 +1,5 @@
 import Student from "@model/Student";
-import Menu from "../pl/Menu";
+import Menu from "../../pl/Menu";
 import SupportedFileTypesEnum from "@enum/SupportedFileTypesEnum";
 import BaseEntityGenerate from "@interface/BaseEntityGenerate";
 
