@@ -32,7 +32,7 @@ class Mechanic extends BaseEntity {
         return super.toCsvFormat({
             id: this.id,
             name: this.name,
-            type: typeof Mechanic,
+            type: "Mechanic",
             data: JSON.stringify(this.getAll())
         })
     }
