@@ -4,7 +4,7 @@ import {iJsonToCsv} from "../mixins/fileMixins";
 
 abstract class BaseEntity implements iBaseEntityInterface {
 
-    protected readonly id: string;
+    public readonly id: string;
     private readonly date: Date;
     private readonly update: Date;
 

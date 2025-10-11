@@ -1,4 +1,3 @@
-import BaseEntity from "@model/BaseEntity";
 import eCurseEnum from "@enum/CourseEnum";
 import eSexEnum from "@enum/SexEnum";
 import StudentCard from "@model/StudentCard";
@@ -18,6 +17,9 @@ class Student extends BaseEntityGenerate {
     readonly gpa: number;
     readonly studentRecordBookNumber: number;
     readonly residence: Residence;
+    readonly averageGrade: number;
+
+    scholarship?: number;
 
     private static readonly MIN_AGE = 17;
     private static readonly MAX_AGE = 30;
@@ -31,7 +33,8 @@ class Student extends BaseEntityGenerate {
         studentCard: StudentCard,
         gpa: number,
         studentRecordBookNumber: number,
-        residence: Residence
+        residence: Residence,
+        averageGrade: number
     ) {
         super();
         this.name = name;
@@ -43,6 +46,7 @@ class Student extends BaseEntityGenerate {
         this.gpa = gpa;
         this.studentRecordBookNumber = studentRecordBookNumber;
         this.residence = residence;
+        this.averageGrade = averageGrade;
     }
 
     public override getAll() {
@@ -87,7 +91,8 @@ class Student extends BaseEntityGenerate {
             new StudentCard(randomCode, randomCardNumber),
             randomGpa,
             randomBookNumber,
-            new Residence("Street", "City", "12345", "USA")
+            new Residence("Street", "City", "12345", "USA"),
+            10
         );
     }
 
