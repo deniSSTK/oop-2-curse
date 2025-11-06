@@ -15,6 +15,7 @@
   "devDependencies": {
     "@types/node": "^18.19.127",
     "@types/xml2js": "^0.4.14",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.5.3",
     "undici-types": "^7.16.0"
   },

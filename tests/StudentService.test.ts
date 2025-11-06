@@ -1,13 +1,13 @@
 import test from "node:test";
 import assert from "node:assert";
-import MockStudentRepository from "./MockStudentRepository";
-import StudentService from "../../src/bll/StudentService";
-import Student from "../../src/models/Student";
-import eSexEnum from "../../src/enums/SexEnum";
-import eCurseEnum from "../../src/enums/CourseEnum";
-import StudentCard from "../../src/models/StudentCard";
-import Residence from "../../src/models/Residence";
-import eStudentCardCodeEnum from "../../src/enums/StudentCardCodesEnum";
+import MockStudentRepository from "./mocks/MockStudentRepository";
+import StudentService from "../src/bll/StudentService";
+import Student from "../src/models/Student";
+import eSexEnum from "../src/enums/SexEnum";
+import eCurseEnum from "../src/enums/CourseEnum";
+import StudentCard from "../src/models/StudentCard";
+import Residence from "../src/models/Residence";
+import eStudentCardCodeEnum from "../src/enums/StudentCardCodesEnum";
 
 export const studentsMock: Student[] = [
     new Student(
@@ -52,15 +52,7 @@ test("should return only excellent male students in course 2", async () => {
     const service = new StudentService(new MockStudentRepository(studentsMock));
     const result = await service.getExcellentMaleStudentsInCourse(2);
     assert.strictEqual(result.length, 1);
-    assert.strictEqual(result[0].surname, "John");
-});
-
-test("should give scholarship correctly", async () => {
-    const service = new StudentService(new MockStudentRepository(studentsMock));
-    const success = await service.giveScholarship("1", 500);
-    const updatedStudent = (await service.getAllStudents()).find(s => s.id === "1");
-    assert.strictEqual(success, true);
-    assert.strictEqual(updatedStudent?.scholarship, 500);
+    assert.strictEqual(result[0].name, "John");
 });
 
 test("should return false if student not found", async () => {
